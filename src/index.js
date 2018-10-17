@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Router from "./routes";
+import Router from "./Routes";
 
 ReactDOM.render(
   <Router/>,
