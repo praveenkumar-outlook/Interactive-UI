@@ -7,14 +7,14 @@ import {
   Button,
   Typography
 } from "@material-ui/core";
+import "./style.scss";
 
 class ElementCard extends Component {
   render() {
     const {attributes} = this.props;
-    const bull = <span>•</span>;
 
     return (
-      <Card>
+      <Card className="ui-element-card">
         <CardContent>
           <Typography color="textSecondary">
             {attributes.path}
