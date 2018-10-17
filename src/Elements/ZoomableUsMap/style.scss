@@ -1,0 +1,13 @@
+.ui-zoomable-us-map {
+  .background {
+    fill: none;
+  }
+  .state {
+    cursor: pointer;
+    stroke: #ffffff;
+    stroke-width: 2;
+    &.active {
+      fill: orange;
+    }
+  }
+}

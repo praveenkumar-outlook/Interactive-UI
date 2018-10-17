@@ -1,38 +1,38 @@
 import React, {Component} from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography
+} from "@material-ui/core";
 
 class ElementCard extends Component {
   render() {
+    const {attributes} = this.props;
     const bull = <span>•</span>;
 
     return (
       <Card>
         <CardContent>
           <Typography color="textSecondary">
-            Word of the Day
+            {attributes.path}
           </Typography>
           <Typography variant="headline" component="h2">
-            be
-            {bull}
-            nev
-            {bull}o{bull}
-            lent
+            {attributes.key.toUpperCase()}
           </Typography>
           <Typography color="textSecondary">
-            adjective
+            {attributes.tags.join(", ")}
           </Typography>
           <Typography component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+            {attributes.description}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button variant="outlined">
+            <Link to={attributes.path}>Open</Link>
+          </Button>
         </CardActions>
       </Card>
     );

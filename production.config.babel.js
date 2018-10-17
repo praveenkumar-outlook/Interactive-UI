@@ -12,7 +12,7 @@ const config = {
   },
   mode: "production",
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".json"]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -28,7 +28,10 @@ const config = {
         loader: "babel-loader",
         options: {
           babelrc: false,
-          plugins: ["transform-object-rest-spread"],
+          plugins: [
+            "transform-object-rest-spread",
+            "transform-class-properties"
+          ],
           presets: [
             "env",
             "react"

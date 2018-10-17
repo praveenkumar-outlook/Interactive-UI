@@ -12,7 +12,7 @@ const config = {
   },
   mode: "development",
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".json"]
   },
   devtool: "inline-source-map",
   plugins: [
@@ -36,7 +36,10 @@ const config = {
         loader: "babel-loader",
         options: {
           babelrc: false,
-          plugins: ["transform-object-rest-spread"],
+          plugins: [
+            "transform-object-rest-spread",
+            "transform-class-properties"
+          ],
           presets: [
             "env",
             "react"
