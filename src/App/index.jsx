@@ -11,7 +11,7 @@ class App extends React.Component {
         <Grid container>
           {
             Elements.map((element) => (
-              <Grid item md={4}
+              <Grid item xs={12} sm={6} md={4}
                 key={element.key}>
                 <ElementCard
                   attributes={element}

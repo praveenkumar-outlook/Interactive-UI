@@ -17,7 +17,7 @@ const AppRouter = () => (
     <div className="ui-route">
       <Header />
       <Grid container justify="center" spacing={16}>
-        <Grid item md={10}>
+        <Grid item xs={12} sm={12} md={10}>
           {
             Elements.map((route) => (
               <Route
@@ -26,24 +26,29 @@ const AppRouter = () => (
                 path={route.path}
                 render={() =>
                   <Grid container>
-                    <Grid item md={12}>
-                      <Grid className="margin-tb-20" container>
+                    <Grid item xs={12} sm={12} md={12}>
+                      <Grid className="margin-tb-20" container
+                        justify="space-between">
                         <Grid item>
-                          <Typography variant="h6" color="inherit">
-                            {route.key.toUpperCase()}
-                          </Typography>
-                        </Grid>
-                        <Grid item md={9}>
-                          {
-                            route.tags.map((tag) => (
-                              <Chip
-                                className="margin-l-10"
-                                key={tag.toUpperCase()}
-                                avatar={<Avatar>{tag.slice(0, 1)}</Avatar>}
-                                label={tag}
-                              />
-                            ))
-                          }
+                          <Grid container>
+                            <Grid item>
+                              <Typography variant="h6" color="inherit">
+                                {route.key.toUpperCase()}
+                              </Typography>
+                            </Grid>
+                            <Grid item>
+                              {
+                                route.tags.map((tag) => (
+                                  <Chip
+                                    className="margin-l-10"
+                                    key={tag.toUpperCase()}
+                                    avatar={<Avatar>{tag.slice(0, 1)}</Avatar>}
+                                    label={tag}
+                                  />
+                                ))
+                              }
+                            </Grid>
+                          </Grid>
                         </Grid>
                         <Grid item>
                           <Button variant="outlined">
@@ -52,7 +57,7 @@ const AppRouter = () => (
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item md={12}>
+                    <Grid item xs={12} sm={12} md={12}>
                       <route.component />
                     </Grid>
                   </Grid>

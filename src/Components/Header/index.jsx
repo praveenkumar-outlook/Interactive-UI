@@ -24,8 +24,8 @@ class Header extends Component {
     return (
       <AppBar className="ui-header" position="static">
         <Toolbar>
-          <Grid container>
-            <Grid item md={10}>
+          <Grid container justify="space-between">
+            <Grid item>
               <Typography className="title" variant="h6" color="inherit" noWrap>
                 Interactive-UI
               </Typography>

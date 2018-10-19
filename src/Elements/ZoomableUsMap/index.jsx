@@ -19,8 +19,8 @@ class ZoomableUsMap extends Component {
       width = this.el.find("#zoomable-us-map").width(),
       map = d3.select("#zoomable-us-map .map"),
       projection = d3.geoAlbersUsa()
-        .scale(1070)
-        .translate([width / 2, 250]),
+        .fitExtent([[10, 10], [width - 10, height - 10]],
+          {type: 'FeatureCollection', features: US.features}),
       path = d3.geoPath()
         .projection(projection);
 
@@ -38,8 +38,8 @@ class ZoomableUsMap extends Component {
       width = this.el.find("#zoomable-us-map").width(),
       map = d3.select("#zoomable-us-map .map"),
       projection = d3.geoAlbersUsa()
-        .scale(1070)
-        .translate([width / 2, 250]),
+        .fitExtent([[10, 10], [width - 10, height - 10]],
+          {type: 'FeatureCollection', features: US.features}),
       path = d3.geoPath()
         .projection(projection);
     let x, y, k,
