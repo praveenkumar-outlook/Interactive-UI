@@ -60,7 +60,7 @@ const AppRouter = () => (
               />
             ))
           }
-          <Grid item md={4}>
+          <Grid item>
             <Route exact path="/" component={App}></Route>
           </Grid>
         </Grid>

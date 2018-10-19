@@ -17,16 +17,17 @@ import {
   Notifications,
   Search
 } from "@material-ui/icons";
+import "./style.scss";
 
 class Header extends Component {
   render() {
     return (
-      <AppBar position="static">
+      <AppBar className="ui-header" position="static">
         <Toolbar>
           <Grid container>
             <Grid item md={10}>
-              <Typography variant="h6" color="inherit" noWrap>
-                Material-UI
+              <Typography className="title" variant="h6" color="inherit" noWrap>
+                Interactive-UI
               </Typography>
             </Grid>
             <Grid item>

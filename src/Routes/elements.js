@@ -6,7 +6,7 @@ export default [{
   path: "/zoomable-us-map",
   component: ZoomableUsMap,
   description: "Zoomable US Map using transform in d3.js",
-  tags: ["d3", "svg"]
+  tags: ["d3", "svg", "transform"]
 }, {
   key: "pulse-transition",
   path: "/pulse-transition",
