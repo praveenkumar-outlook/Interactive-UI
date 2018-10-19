@@ -1,0 +1,17 @@
+.ui-pulse-transition {
+  .background {
+    fill: #000000;
+  }
+  .pulse {
+    fill: none;
+    stroke: #00dcdc;
+    stroke-width: 2;
+  }
+  .grid {
+    .grid-line {
+      opacity: 0.5;
+      stroke: #dedede;
+      stroke-dasharray: 5,5;
+    }
+  }
+}
