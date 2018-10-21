@@ -8,7 +8,7 @@ const config = {
   },
   output: {
     path: path.join(__dirname, "public"),
-    filename: "[name].bundle.js"
+    filename: "assets/[name].bundle.js"
   },
   mode: "development",
   resolve: {
