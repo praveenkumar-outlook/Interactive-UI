@@ -1,0 +1,13 @@
+.ui-spinner-transition {
+  .spinner {
+    stroke: #DA1E0B;
+    stroke-width: 10;
+    &.odd {
+      stroke: #FF970B;
+    }
+  }
+  .spinner-center {
+    fill: #FF970B;
+    r: 10;
+  }
+}
