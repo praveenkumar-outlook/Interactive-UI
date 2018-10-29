@@ -1,0 +1,39 @@
+.ui-customer-card {
+  .customer-card {
+    .card {
+      fill: #b71c1c;
+    }
+    .chip {
+      fill: #f3c251;
+    }
+    .card-text {
+      fill: #ffffff;
+      font-family: Roboto;
+      font-size: 24px;
+      word-spacing: 10px;
+      &.name {
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+      &.date {
+        font-size: 16px;
+      }
+      &.cvv {
+        font-size: 16px;
+        text-anchor: end;
+      }
+      &.cvv-number {
+        fill: #000000;
+        font-size: 14px;
+        font-weight: 500;
+        text-anchor: end;
+      }
+    }
+    .card-bar {
+      fill: #000000;
+    }
+    .card-name-holder {
+      fill: #ffffff;
+    }
+  }
+}
