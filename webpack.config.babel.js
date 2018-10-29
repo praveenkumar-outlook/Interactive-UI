@@ -8,7 +8,7 @@ const config = {
   },
   output: {
     path: path.join(__dirname, "public"),
-    filename: "assets/[name].bundle.js"
+    filename: "scripts/[name].bundle.js"
   },
   mode: "development",
   resolve: {
@@ -61,9 +61,13 @@ const config = {
       ]
     }, {
       test: /\.(png|svg|jpg|gif)$/,
-      use: [
-        "file-loader"
-      ]
+      use: [{
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "images/"
+        }
+      }]
     }, {
       test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
       use: [

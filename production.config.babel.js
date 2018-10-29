@@ -8,7 +8,7 @@ const config = {
   output: {
     path: path.join(__dirname, "public"),
     hashDigestLength: 10,
-    filename: "assets/[name].[hash].bundle.js"
+    filename: "scripts/[name].[hash].bundle.js"
   },
   mode: "production",
   resolve: {
@@ -53,9 +53,13 @@ const config = {
       ]
     }, {
       test: /\.(png|svg|jpg|gif)$/,
-      use: [
-        "file-loader"
-      ]
+      use: [{
+        loader: "file-loader",
+        options: {
+          name: "[hash].[ext]",
+          outputPath: "images/"
+        }
+      }]
     }, {
       test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
       use: [
