@@ -2,6 +2,7 @@ import ZoomableUsMap from "../Elements/ZoomableUsMap";
 import PulseTransition from "../Elements/PulseTransition";
 import SpinnerTransition from "../Elements/SpinnerTransition";
 import CustomerCard from "../Elements/CustomerCard";
+import DrawEditor from "../Elements/DrawEditor";
 
 export default [{
   key: "zoomable-us-map",
@@ -31,4 +32,11 @@ export default [{
   description: "Customer card generation by user",
   tags: ["html", "form"],
   date: "10/21/2018"
+}, {
+  key: "draw-editor",
+  path: "/draw-editor",
+  component: DrawEditor,
+  description: "Editor to draw and download as image",
+  tags: ["svg", "d3", "html"],
+  date: "12/16/2018"
 }];

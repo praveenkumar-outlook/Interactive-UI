@@ -1,0 +1,33 @@
+.ui-draw-editor {
+  .chart {
+    fill: #ffffff;
+    stroke: #777777;
+  }
+  .drawing {
+    fill: none;
+    stroke: #000000;
+    &.red {
+      stroke: #ff0000;
+    }
+    &.green {
+      stroke: #00ff00;
+    }
+    &.blue {
+      stroke: #0000ff;
+    }
+  }
+  .radio {
+    &.black {
+      color: #000000;
+    }
+    &.red {
+      color: #ff0000;
+    }
+    &.green {
+      color: #00ff00;
+    }
+    &.blue {
+      color: #0000ff;
+    }
+  }
+}
