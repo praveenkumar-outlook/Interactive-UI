@@ -51,4 +51,14 @@ export default [{
   description: "Editor to draw and download as image",
   tags: ["svg", "d3", "html"],
   date: "12/16/2018"
+}, {
+  key: "cricket-field",
+  path: "/cricket-field",
+  component: Loadable({
+    loader: () => import("../Elements/CricketField"),
+    loading: Loader
+  }),
+  description: "Editor to manage fielding positions in cricket",
+  tags: ["svg", "d3", "html"],
+  date: "02/26/2019"
 }];
