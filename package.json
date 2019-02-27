@@ -6,9 +6,9 @@
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack --config production.config.babel.js",
-    "grunt-dev": "grunt dev",
-    "grunt-build": "grunt build",
-    "grunt-lint": "grunt eslint"
+    "dev": "grunt dev",
+    "build": "grunt build",
+    "lint": "grunt eslint"
   },
   "repository": "git+https://github.com/praveenkumar-outlook/Iteractive-UI.git",
   "keywords": [
