@@ -2,7 +2,12 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import * as d3 from "d3";
-import {Button} from "@material-ui/core";
+import {
+  Button,
+  Dialog,
+  Grid,
+  TextField
+} from "@material-ui/core";
 
 class CricketField extends Component {
   constructor(props) {
@@ -11,33 +16,58 @@ class CricketField extends Component {
       fielders: 9,
       outerFielders: 5,
       innerFielders: 9,
-      width: 0
+      width: 0,
+      dialog: false,
+      position: [],
+      circle: "",
+      name: ""
     };
   };
 
   componentDidMount() {
     this.el = $(ReactDOM.findDOMNode(this));
     d3.select(".outer-field")
-      .on("click", this.handleOuterField);
+      .on("click", () => this.handleOpenModal("outer"));
     d3.select(".inner-field")
-      .on("click", this.handleInnerField);
+      .on("click", () => this.handleOpenModal("inner"));
     window.addEventListener("orientationchange", this.reloadWindow);
     this.setState({
       width: this.el.width()
     });
   }
 
+  handleOpenModal = (circle) => {
+    this.setState({
+      dialog: true,
+      position: d3.mouse(d3.event.target),
+      circle: circle
+    });
+  }
+
+  handleCloseModal = (event) => {
+    event.preventDefault();
+    this.setState({
+      dialog: false
+    });
+    this.handleField(this.state.circle, this.state.position);
+  }
+
   componentWillUnmount() {
     window.removeEventListener("orientationchange", this.reloadWindow);
+  }
+
+  handleName = (event) => {
+    this.setState({
+      name: event.target.value
+    });
   }
 
   reloadWindow = () => {
     window.location.reload();
   }
 
-  handleOuterField = () => {
-    if (this.state.fielders && this.state.outerFielders) {
-      const position = d3.mouse(d3.event.target);
+  handleField = (circle, position) => {
+    if (this.state.fielders && this.state[`${circle}Fielders`]) {
       d3.select(".field-chart")
         .append("circle")
         .attr("class", "fielder")
@@ -46,45 +76,24 @@ class CricketField extends Component {
         .attr("r", 10)
         .attr("fill", "#f00")
         .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .on("dblclick", () => this.deleteFielder("outer"));
-      this.setState({
-        fielders: this.state.fielders - 1,
-        outerFielders: this.state.outerFielders - 1
-      });
-    } else {
-      alert("Outer Fielders count exceeded!!!!");
-    }
-  }
-
-  handleInnerField = () => {
-    if (this.state.fielders && this.state.innerFielders) {
-      const position = d3.mouse(d3.event.target);
+        .attr("stroke-width", 1);
       d3.select(".field-chart")
-        .append("circle")
-        .attr("class", "fielder")
-        .attr("cx", position[0])
-        .attr("cy", position[1])
-        .attr("r", 10)
-        .attr("fill", "#f00")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 1)
-        .on("dblclick", () => this.deleteFielder("inner"));
+        .append("text")
+        .attr("class", "fielder-name")
+        .attr("x", position[0])
+        .attr("y", position[1] - 15)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 11)
+        .attr("font-weight", 700)
+        .text(this.state.name);
       this.setState({
         fielders: this.state.fielders - 1,
-        innerFielders: this.state.innerFielders - 1
+        [`${circle}Fielders`]: this.state[`${circle}Fielders`] - 1,
+        name: ""
       });
     } else {
       alert("Fielders count exceeded!!!!");
     }
-  }
-
-  deleteFielder(field) {
-    d3.select(d3.event.target).remove();
-    this.setState({
-      fielders: this.state.fielders + 1,
-      [`${field}Fielders`]: this.state[`${field}Fielders`] + 1
-    });
   }
 
   handleSave = () => {
@@ -114,6 +123,7 @@ class CricketField extends Component {
 
   resetFielders = () => {
     d3.selectAll(".fielder").remove();
+    d3.selectAll(".fielder-name").remove();
     this.setState({
       fielders: 9,
       outerFielders: 5,
@@ -124,6 +134,24 @@ class CricketField extends Component {
   render() {
     return (
       <div className="ui-cricket-field">
+        <Dialog open={this.state.dialog}>
+          <form onSubmit={this.handleCloseModal}>
+            <Grid container alignItems="center" style={{padding: '10px'}}>
+              <Grid item>
+                <TextField
+                  label="Player Name"
+                  value={this.state.name}
+                  onChange={this.handleName}
+                  margin="normal"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item>
+                <Button type="submit">OK</Button>
+              </Grid>
+            </Grid>
+          </form>
+        </Dialog>
         <Button variant="outlined" color="primary"
           onClick={this.handleSave}>Save As Image</Button>
         <Button variant="outlined" color="primary"
