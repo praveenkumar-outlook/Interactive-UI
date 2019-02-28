@@ -16,6 +16,7 @@ class CricketField extends Component {
       fielders: 9,
       outerFielders: 5,
       innerFielders: 9,
+      onFielders: 5,
       width: 0,
       dialog: false,
       position: [],
@@ -67,7 +68,16 @@ class CricketField extends Component {
   }
 
   handleField = (circle, position) => {
+    let {onFielders} = this.state;
     if (this.state.fielders && this.state[`${circle}Fielders`]) {
+      if (position[0] > (this.state.width / 2)) {
+        if (onFielders) {
+          onFielders -= 1;
+        } else {
+          alert("On side Fielders count exceeded!!!!");
+          return;
+        }
+      }
       d3.select(".field-chart")
         .append("circle")
         .attr("class", "fielder")
@@ -89,10 +99,17 @@ class CricketField extends Component {
       this.setState({
         fielders: this.state.fielders - 1,
         [`${circle}Fielders`]: this.state[`${circle}Fielders`] - 1,
+        onFielders,
         name: ""
       });
     } else {
-      alert("Fielders count exceeded!!!!");
+      let message;
+      if (!this.state.fielders) {
+        message = "Fielders count exceeded!!!!";
+      } else if (!this.state.outerFielders) {
+        message = "Outer Circle Fielders count exceeded!!!!";
+      }
+      alert(message);
     }
   }
 
@@ -127,7 +144,8 @@ class CricketField extends Component {
     this.setState({
       fielders: 9,
       outerFielders: 5,
-      innerFielders: 9
+      innerFielders: 9,
+      onFielders: 5
     });
   }
 
